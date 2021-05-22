@@ -61,24 +61,21 @@ RSpec.describe 'MerchantController', type: :request do
      @merchant49 = Merchant.create(name: Faker::Name.name, id: 49)
      @merchant50 = Merchant.create(name: Faker::Name.name, id: 50)
    end
-    describe "GET call" do
-      # it 'gets all merchants' do
-      #   get 'api/v1/merchants'
-      #
-      #   expect(response).to be_successful
-      #   expect(response).to have_http_status(200)
-      #   expect(response).to render_template("index")
-      #   @merchants = JSON.parse(response.body, symbolize_names: true)
-      #   expect(@merchants[:data].count).to eq(20)
-      # end
-
+    describe "GET index method" do
+      it 'gets a successful response' do
+        get api_v1_merchants_url, headers: valid_headers, as: :json
+        expect(response).to be_successful
+        expect(response).to have_http_status(200)
+        body = JSON.parse(response.body, symbolize_names: true)
+        expect(body[:data]).to be_an(Array)
+        expect(body[:data].first.class).to eq(Hash)
+      end
       # it "renders a JSON response with the new api/v1_merchant" do
       #       get api_v1_merchants_url,
       #         params: { name: Faker::Name.name }, headers: valid_headers, as: :json
       #       expect(response).to have_http_status(200)
       #     end
       #   end
-
       it "renders only 20" do
         get api_v1_merchants_url, headers: valid_headers, as: :json
         expect(response).to be_successful
@@ -87,7 +84,17 @@ RSpec.describe 'MerchantController', type: :request do
         expect(body[:data]).to be_an(Array)
       end
 
-      it "the first 20 for Merchants in the db for page 1" do
+      it 'can fetch first page of 50 merchants' do
+        merchants = Merchant.all
+        get '/api/v1/merchants?per_page=50', headers: valid_headers, as: :json
+        expect(response).to be_successful
+        body = JSON.parse(response.body, symbolize_names: true)
+        expect(body[:data].size).to eq(50)
+        expect(body[:data].first[:id].to_i).to eq(merchants.first.id)
+        expect(body[:data].last[:id].to_i).to eq(merchants[49].id)
+      end
+
+      it "fetches the first 20 for Merchants in the db for page 1" do
         get api_v1_merchants_url, headers: valid_headers, as: :json
         expect(response).to be_successful
         body = JSON.parse(response.body, symbolize_names: true)
@@ -95,11 +102,10 @@ RSpec.describe 'MerchantController', type: :request do
         expect(body[:data][19][:attributes][:name]).to eq(@merchant20.name)
       end
 
-      it "the first 20 for Merchants in the db for page 2" do
+      it "fetches the first 20 for Merchants in the db for page 2" do
         get '/api/v1/merchants?page=2&per_page=20', headers: valid_headers, as: :json
         expect(response).to be_successful
         body = JSON.parse(response.body, symbolize_names: true)
-        # require "pry"; binding.pry
         expect(body[:data][0][:attributes][:name]).to eq(@merchant21.name)
         expect(body[:data][19][:attributes][:name]).to eq(@merchant40.name)
       end
@@ -111,5 +117,21 @@ RSpec.describe 'MerchantController', type: :request do
         expect(body[:data][0][:attributes][:name]).to eq(@merchant1.name)
         expect(body[:data][19][:attributes][:name]).to eq(@merchant20.name)
       end
+    end
+
+    describe "GET show method" do
+      it 'can get a singular merchant' do
+        get "/api/v1/merchants/#{@merchant1.id}", headers: valid_headers, as: :json
+        expect(response).to be_successful
+        body = JSON.parse(response.body, symbolize_names: true)
+        expect(body[:data][:attributes][:name]).to eq(@merchant1.name)
+        expect(body[:data][:id]).to eq(@merchant1.id.to_s)
+      end
+
+      # it 'returns a 404 if the merchant id does not exist' do
+      #   # require "pry"; binding.pry
+      #   get "/api/v1/merchants/222", headers: valid_headers, as: :json
+      #   expect(response).to have_http_status(404)
+      # end
     end
 end
