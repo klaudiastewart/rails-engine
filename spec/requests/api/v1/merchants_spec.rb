@@ -99,8 +99,17 @@ RSpec.describe 'MerchantController', type: :request do
         get '/api/v1/merchants?page=2&per_page=20', headers: valid_headers, as: :json
         expect(response).to be_successful
         body = JSON.parse(response.body, symbolize_names: true)
+        # require "pry"; binding.pry
         expect(body[:data][0][:attributes][:name]).to eq(@merchant21.name)
         expect(body[:data][19][:attributes][:name]).to eq(@merchant40.name)
+      end
+
+      it 'fetches page 1 if page 0 or lower' do
+        get '/api/v1/merchants?page=0&per_page=20', headers: valid_headers, as: :json
+        expect(response).to be_successful
+        body = JSON.parse(response.body, symbolize_names: true)
+        expect(body[:data][0][:attributes][:name]).to eq(@merchant1.name)
+        expect(body[:data][19][:attributes][:name]).to eq(@merchant20.name)
       end
     end
 end
