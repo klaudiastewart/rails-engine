@@ -17,7 +17,17 @@ class Api::V1::ItemsController < ApplicationController
     if @item.save
       render json: ItemSerializer.new(@item),status: :created, location: api_v1_item_url(@item)
     else
-      render json: {:status => '405/method not allowed', :message => 'Item has not been created', :data => @item}.to_json
+      render json: ItemSerializer.new(@item), status: 400, message: 'Item has not been created', data: @item
+    end
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    if @item.save
+      render json: ItemSerializer.new(@item), status: 200, location: api_v1_item_url(@item)
+    else
+      render json: ItemSerializer.new(@item), status: 400, message: 'Item has not been updated', data: @item
     end
   end
 
