@@ -5,7 +5,7 @@ class Item < MerchantAndItem
   has_many :transactions, through: :invoices
   has_many :bulk_discounts, through: :merchant
 
-  validates_presence_of :name, :description, :unit_price, :merchant_id
+  validates_presence_of :name, :unit_price
 
   # enum status: [:disabled, :enabled]
 end
