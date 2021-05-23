@@ -171,4 +171,35 @@ RSpec.describe 'ItemsController', type: :request do
       expect(Item.find_by_id(@item50.id).present?).to eq(false)
     end
   end
+
+  describe 'updating an item' do
+    it 'can update an item' do
+      expect(@item50.name).to eq(@item50.name)
+      expect(@item50.description).to eq(@item50.description)
+      expect(@item50.unit_price).to eq(@item50.unit_price)
+      put "/api/v1/items/#{@item50.id}", params: {
+        name: 'Large Rock',
+        description: 'Weight down things with ease',
+        unit_price: 1023,
+        merchant_id: @merchant1.id
+      }, headers: valid_headers, as: :json
+      @item50.reload
+      expect(response).to have_http_status(200)
+      expect(@item50.name).to eq("Large Rock")
+      expect(@item50.description).to eq("Weight down things with ease")
+      expect(@item50.unit_price).to eq(1023)
+    end
+
+    it 'does not update the item if name or unit price is not there and renders a 400 message' do
+      put "/api/v1/items/#{@item50.id}", params: {
+        name: '',
+      }, headers: valid_headers, as: :json
+      @item50.reload
+      expect(response).to have_http_status(400)
+      expect(@item50.name).to_not eq('')
+      expect(@item50.name).to eq(@item50.name)
+      expect(@item50.description).to eq(@item50.description)
+      expect(@item50.unit_price).to eq(@item50.unit_price)
+    end
+  end
 end
