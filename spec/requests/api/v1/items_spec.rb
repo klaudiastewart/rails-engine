@@ -68,7 +68,7 @@ RSpec.describe 'ItemsController', type: :request do
       get "/api/v1/items", headers: valid_headers, as: :json
       expect(response).to be_successful
       body = JSON.parse(response.body, symbolize_names: true)
-      expect(body[:data].size).to eq(3)
+      expect(body[:data].size).to eq(20)
       expect(body[:data].first.class).to eq(Hash)
     end
 
@@ -76,7 +76,7 @@ RSpec.describe 'ItemsController', type: :request do
       get api_v1_items_url, headers: valid_headers, as: :json
       expect(response).to be_successful
       body = JSON.parse(response.body, symbolize_names: true)
-      expect(body[:data].size).to eq(3)
+      expect(body[:data].size).to eq(20)
       expect(body[:data]).to be_an(Array)
     end
 
