@@ -17,7 +17,7 @@ class Api::V1::ItemsController < ApplicationController
     if @item.save
       render json: ItemSerializer.new(@item),status: :created, location: api_v1_item_url(@item)
     else
-      render json: ItemSerializer.new(@item).errors, status: :unproccessable_entity
+      render json: {:status => '405/method not allowed', :message => 'Item has not been created', :data => @item}.to_json
     end
   end
 
