@@ -135,4 +135,40 @@ RSpec.describe 'ItemsController', type: :request do
     #   expect(response).to have_http_status(404)
     # end
   end
+
+  describe 'creating an item and deleting it' do
+    it 'can create an item' do
+      expect(Item.count).to eq(50)
+      post api_v1_items_url, params: {
+        name: Faker::Vehicle.make,
+        description: Faker::Lorem.sentence,
+        unit_price: 2,
+        merchant_id: @merchant1.id
+      }, headers: valid_headers, as: :json
+      expect(Item.count).to eq(51)
+      expect(response).to have_http_status(:created) #201
+    end
+
+    it 'will not create an item if params are not filled out fully' do
+      expect(Item.count).to eq(50)
+      post api_v1_items_url, params: {
+        merchant_id: @merchant1.id
+      }, headers: valid_headers, as: :json
+      expect(Item.count).to eq(50)
+    end
+
+    # it 'will not create the item and render a 404 if there are no params at all' do
+    #   expect(Item.count).to eq(50)
+    #   post api_v1_items_url, headers: valid_headers, as: :json
+    #   expect(response).to have_http_status(404)
+    #   expect(response.content_type).to eq("application/json")
+    # end
+
+    it 'can delete an item' do
+      expect(Item.count).to eq(50)
+      delete api_v1_item_url(Item.last), headers: valid_headers, as: :json
+      expect(Item.count).to eq(49)
+      expect(Item.find_by_id(@item50.id).present?).to eq(false)
+    end
+  end
 end
