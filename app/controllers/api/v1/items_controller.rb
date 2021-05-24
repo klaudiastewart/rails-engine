@@ -15,13 +15,10 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    record_not_found("Record not found") if !params[:merchant_id]
     @merchant = Merchant.find(params[:merchant_id])
     @item = @merchant.items.create(item_params)
     if @item.save
       render json: ItemSerializer.new(@item),status: :created, location: api_v1_item_url(@item)
-    else
-      return record_not_found(@item.errors.full_messages)
     end
   end
 
