@@ -124,16 +124,16 @@ RSpec.describe 'ItemsController', type: :request do
       expect(body[:data][:id]).to eq(@item1.id.to_s)
     end
 
-    # it 'returns a 404 if the item id does not exist' do
-    #   # require "pry"; binding.pry
-    #   get "/api/v1/items/2222", headers: valid_headers, as: :json
-    #   expect(response).to have_http_status(404)
-    # end
-    #
-    # it 'returns 404 if the item id is stringed' do
-    #   get "/api/v1/items/'2222'", headers: valid_headers, as: :json
-    #   expect(response).to have_http_status(404)
-    # end
+    it 'returns a 404 if the item id does not exist' do
+      get "/api/v1/items/21", headers: valid_headers, as: :json
+      expect(response).to have_http_status(404)
+      expect(response.body).to eq("{\"error\":\"Record not found\",\"status\":404}")
+    end
+
+    it 'returns 404 if the item id is stringed' do
+      get "/api/v1/items/'2222'", headers: valid_headers, as: :json
+      expect(response).to have_http_status(404)
+    end
   end
 
   describe 'creating an item and deleting it' do
