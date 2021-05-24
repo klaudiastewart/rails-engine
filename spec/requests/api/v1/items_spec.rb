@@ -195,11 +195,7 @@ RSpec.describe 'ItemsController', type: :request do
         name: '',
       }, headers: valid_headers, as: :json
       @item50.reload
-      expect(response).to have_http_status(400)
-      expect(@item50.name).to_not eq('')
-      expect(@item50.name).to eq(@item50.name)
-      expect(@item50.description).to eq(@item50.description)
-      expect(@item50.unit_price).to eq(@item50.unit_price)
+      expect(response).to have_http_status(404)
     end
   end
 end
