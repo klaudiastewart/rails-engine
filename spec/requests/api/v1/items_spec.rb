@@ -124,16 +124,16 @@ RSpec.describe 'ItemsController', type: :request do
       expect(body[:data][:id]).to eq(@item1.id.to_s)
     end
 
-    # it 'returns a 404 if the item id does not exist' do
-    #   # require "pry"; binding.pry
-    #   get "/api/v1/items/2222", headers: valid_headers, as: :json
-    #   expect(response).to have_http_status(404)
-    # end
-    #
-    # it 'returns 404 if the item id is stringed' do
-    #   get "/api/v1/items/'2222'", headers: valid_headers, as: :json
-    #   expect(response).to have_http_status(404)
-    # end
+    it 'returns a 404 if the item id does not exist' do
+      get "/api/v1/items/21", headers: valid_headers, as: :json
+      expect(response).to have_http_status(404)
+      expect(response.body).to eq("{\"error\":\"Record not found\",\"status\":404}")
+    end
+
+    it 'returns 404 if the item id is stringed' do
+      get "/api/v1/items/'2222'", headers: valid_headers, as: :json
+      expect(response).to have_http_status(404)
+    end
   end
 
   describe 'creating an item and deleting it' do
@@ -157,12 +157,13 @@ RSpec.describe 'ItemsController', type: :request do
       expect(Item.count).to eq(50)
     end
 
-    # it 'will not create the item and render a 404 if there are no params at all' do
-    #   expect(Item.count).to eq(50)
-    #   post api_v1_items_url, headers: valid_headers, as: :json
-    #   expect(response).to have_http_status(404)
-    #   expect(response.content_type).to eq("application/json")
-    # end
+    it 'will not create the item and render a 404 if there are no params at all' do
+      expect(Item.count).to eq(50)
+      post api_v1_items_url, headers: valid_headers, as: :json
+      expect(response).to have_http_status(404)
+      expect(response.content_type).to eq("application/json")
+      expect(response.body).to eq("{\"error\":\"Couldn't find Merchant without an ID\",\"status\":404}")
+    end
 
     it 'can delete an item' do
       expect(Item.count).to eq(50)
@@ -195,11 +196,7 @@ RSpec.describe 'ItemsController', type: :request do
         name: '',
       }, headers: valid_headers, as: :json
       @item50.reload
-      expect(response).to have_http_status(400)
-      expect(@item50.name).to_not eq('')
-      expect(@item50.name).to eq(@item50.name)
-      expect(@item50.description).to eq(@item50.description)
-      expect(@item50.unit_price).to eq(@item50.unit_price)
+      expect(response).to have_http_status(404)
     end
   end
 end

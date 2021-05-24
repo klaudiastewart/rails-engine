@@ -128,10 +128,10 @@ RSpec.describe 'MerchantController', type: :request do
         expect(body[:data][:id]).to eq(@merchant1.id.to_s)
       end
 
-      # it 'returns a 404 if the merchant id does not exist' do
-      #   # require "pry"; binding.pry
-      #   get "/api/v1/merchants/222", headers: valid_headers, as: :json
-      #   expect(response).to have_http_status(404)
-      # end
+      it 'returns a 404 if the merchant id does not exist' do
+        get "/api/v1/merchants/2222", headers: valid_headers, as: :json
+        expect(response).to have_http_status(404)
+        expect(response.body).to eq("{\"error\":\"Couldn't find Merchant with 'id'=2222\",\"status\":404}")
+      end
     end
 end

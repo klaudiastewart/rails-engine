@@ -5,7 +5,12 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def show
-    @merchant = Merchant.find(params[:id])
-    render json: MerchantSerializer.new(@merchant)
+    record_not_found("No id entered") if !params[:id]
+    if !Merchant.find(params[:id]).nil?
+      @merchant = Merchant.find(params[:id])
+      render json: MerchantSerializer.new(@merchant)
+    else
+      return record_not_found("Record not found")
+    end
   end
 end

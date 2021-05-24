@@ -37,10 +37,11 @@ RSpec.describe 'MerchantAndItemsController', type: :request do
       expect(body[:data].last[:attributes][:unit_price]).to eq(@item3.unit_price)
     end
 
-    # it 'gives status 404 if merchant id not found' do
-    #   get "/api/v1/items/1/merchant", headers: valid_headers, as: :json
-    #   expect(response).to be(404)
-    # end
+    it 'gives status 404 if merchant id not found' do
+      get "/api/v1/merchants/100000/items", headers: valid_headers, as: :json
+      expect(response.status).to be(404)
+      expect(response.body).to eq("{\"error\":\"Record not found\",\"status\":404}")
+    end
   end
 
   describe 'GET single item merchant' do
@@ -59,9 +60,10 @@ RSpec.describe 'MerchantAndItemsController', type: :request do
       expect(body[:data][:attributes][:name]).to eq(@merchant1.name)
     end
 
-    # it 'gives status 404 if item id not found' do
-    #   get "/api/v1/items/1/merchant", headers: valid_headers, as: :json
-    #   expect(response).to be(404)
-    # end
+    it 'gives status 404 if merchant id not found' do
+      get "/api/v1/items/1/merchant", headers: valid_headers, as: :json
+      expect(response.status).to be(404)
+      expect(response.body).to eq("{\"error\":\"Item record not found\",\"status\":404}")
+    end
   end
 end
