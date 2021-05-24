@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'MerchantController', type: :request do
+RSpec.describe 'MerchantAndItemsController', type: :request do
   let(:valid_headers) {
      {"CONTENT_TYPE" => "application/json"}
      {"Etag" => "f22061f294b256cf0e04fa4d150cee30"}
@@ -36,5 +36,32 @@ RSpec.describe 'MerchantController', type: :request do
       expect(body[:data].last[:attributes][:description]).to eq(@item3.description)
       expect(body[:data].last[:attributes][:unit_price]).to eq(@item3.unit_price)
     end
+
+    # it 'gives status 404 if merchant id not found' do
+    #   get "/api/v1/items/1/merchant", headers: valid_headers, as: :json
+    #   expect(response).to be(404)
+    # end
+  end
+
+  describe 'GET single item merchant' do
+    it 'gets a successful response' do
+      get "/api/v1/items/#{@item1.id}/merchant", headers: valid_headers, as: :json
+      expect(response).to be_successful
+      body = JSON.parse(response.body, symbolize_names: true)
+      expect(body[:data].size).to eq(3)
+      expect(body[:data].first.class).to eq(Array)
+    end
+
+    it 'fetches all the items merchant' do
+      get "/api/v1/items/#{@item1.id}/merchant", headers: valid_headers, as: :json
+      expect(response).to be_successful
+      body = JSON.parse(response.body, symbolize_names: true)
+      expect(body[:data][:attributes][:name]).to eq(@merchant1.name)
+    end
+
+    # it 'gives status 404 if item id not found' do
+    #   get "/api/v1/items/1/merchant", headers: valid_headers, as: :json
+    #   expect(response).to be(404)
+    # end
   end
 end
