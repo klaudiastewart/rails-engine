@@ -6,7 +6,6 @@ class ApplicationController < ActionController::API
       error: "#{message}",
       status: 404
       }).to_json
-
     render json: JSON.parse(body, :quirks_mode => true), status: 404
   end
 
