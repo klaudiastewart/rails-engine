@@ -157,12 +157,13 @@ RSpec.describe 'ItemsController', type: :request do
       expect(Item.count).to eq(50)
     end
 
-    # it 'will not create the item and render a 404 if there are no params at all' do
-    #   expect(Item.count).to eq(50)
-    #   post api_v1_items_url, headers: valid_headers, as: :json
-    #   expect(response).to have_http_status(404)
-    #   expect(response.content_type).to eq("application/json")
-    # end
+    it 'will not create the item and render a 404 if there are no params at all' do
+      expect(Item.count).to eq(50)
+      post api_v1_items_url, headers: valid_headers, as: :json
+      expect(response).to have_http_status(404)
+      expect(response.content_type).to eq("application/json")
+      expect(response.body).to eq("{\"error\":\"Couldn't find Merchant without an ID\",\"status\":404}")
+    end
 
     it 'can delete an item' do
       expect(Item.count).to eq(50)
