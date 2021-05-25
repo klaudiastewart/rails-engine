@@ -9,8 +9,12 @@ class Merchant < MerchantAndItem
 
   # enum status: [:disabled, :enabled]
 
-  # def self.merchant(name)
-  #   select(:name, :id).
-  #   where('name ILIKE ?', "#{name}")
-  # end
+  def self.merchant(name)
+    where('name ILIKE ?', "%#{name}%").
+    first
+  end
+
+  def self.merchants(name)
+    where('name ILIKE ?', "%#{name}%")
+  end
 end
