@@ -9,8 +9,6 @@ class Api::V1::MerchantsController < ApplicationController
     if !Merchant.find(params[:id]).nil?
       @merchant = Merchant.find(params[:id])
       render json: MerchantSerializer.new(@merchant)
-    else
-      return record_not_found("Record not found")
     end
   end
 end
