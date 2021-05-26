@@ -76,4 +76,22 @@ describe 'MerchantNameRevenuesController', type: :request do
       expect(response.body).to eq("{\"data\":{},\"error\":\"Invalid params\",\"status\":400}")
     end
   end
+
+  describe "Show call" do
+    it 'gets one merchants revenue by id' do
+      get "/api/v1/revenue/merchants/#{@merchant1.id}", headers: valid_headers, as: :json
+      expect(response).to be_successful
+      expect(response).to have_http_status(200)
+      body = JSON.parse(response.body, symbolize_names: true)
+      expect(body[:data]).to be_an(Hash)
+      expect(body[:data][:id].to_i).to eq(@merchant1.id)
+      expect(body[:data][:attributes][:revenue]).to eq(@merchant1.single_revenue)
+    end
+
+    it 'returns a 404 if the id does not exist' do
+      get "/api/v1/revenue/merchants/100000", headers: valid_headers, as: :json
+      expect(response.status).to eq(404)
+      expect(response.body).to eq("{\"data\":{},\"error\":\"Couldn't find Merchant with 'id'=100000\",\"status\":404}")
+    end
+  end
 end
