@@ -10,7 +10,12 @@ RSpec.describe 'MerchantAndItemsController', type: :request do
      {"Transfer-Encoding" => "chunked"}
    }
   before(:each) do
+    # @merchant = create(:merchant), to make a bunch, create_list(:merchant, 100)
     @merchant1 = Merchant.create(name: Faker::Name.name, id: 1)
+    # before :each do
+      # @merchant = create(:merchant)
+      # create_list(:item, 6, merchant: @merchant)
+    # end
     @item1 = @merchant1.items.create(name: Faker::Vehicle.make, description: Faker::Lorem.sentence , unit_price: 1)
     @item2 = @merchant1.items.create(name: Faker::Vehicle.make, description: Faker::Lorem.sentence , unit_price: 2)
     @item3 = @merchant1.items.create(name: Faker::Vehicle.make, description: Faker::Lorem.sentence , unit_price: 3)
