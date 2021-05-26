@@ -9,12 +9,12 @@ class Api::V1::Items::SearchController < ApplicationController
   end
 
   def show
-    @item = Item.find_item(params[:name])
-    if @item.present?
-      render json: ItemSerializer.new(@item)
-    else
-      return record_not_found("No matches for query")
-    end
+    # @item = Item.find_item(params[:name])
+    # if @item.present?
+    #   render json: ItemSerializer.new(@item)
+    # else
+    #   return record_not_found("No matches for query")
+    # end
 
     # if params[:min_price].present? || params[:max_price].present?
     #   # require "pry"; binding.pry

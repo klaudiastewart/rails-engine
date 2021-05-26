@@ -17,4 +17,13 @@ class Merchant < MerchantAndItem
   def self.merchants(name)
     where('name ILIKE ?', "%#{name}%")
   end
+
+  def self.total_revenue(quantity)
+    joins(:transactions)
+    .select('merchants.*, sum(invoice_items.unit_price * invoice_items.quantity) as revenue')
+    .where('transactions.result = ?', 'success')
+    .group(:id)
+    .order(revenue: :desc)
+    .limit(quantity)
+  end
 end
