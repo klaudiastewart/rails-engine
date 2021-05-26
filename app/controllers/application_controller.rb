@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
 
   def bad_params(message)
     body = ({
+      data: {},
       error: "#{message}",
       status: 404
       }).to_json

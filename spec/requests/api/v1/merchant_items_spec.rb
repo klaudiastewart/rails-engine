@@ -40,7 +40,7 @@ RSpec.describe 'MerchantAndItemsController', type: :request do
     it 'gives status 404 if merchant id not found' do
       get "/api/v1/merchants/100000/items", headers: valid_headers, as: :json
       expect(response.status).to be(404)
-      expect(response.body).to eq("{\"error\":\"Record not found\",\"status\":404}")
+      expect(response.body).to eq("{\"data\":{},\"error\":\"Record not found\",\"status\":404}")
     end
   end
 
@@ -63,7 +63,7 @@ RSpec.describe 'MerchantAndItemsController', type: :request do
     it 'gives status 404 if merchant id not found' do
       get "/api/v1/items/1/merchant", headers: valid_headers, as: :json
       expect(response.status).to be(404)
-      expect(response.body).to eq("{\"error\":\"Item record not found\",\"status\":404}")
+      expect(response.body).to eq("{\"data\":{},\"error\":\"Item record not found\",\"status\":404}")
     end
   end
 end

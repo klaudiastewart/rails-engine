@@ -127,7 +127,7 @@ RSpec.describe 'ItemsController', type: :request do
     it 'returns a 404 if the item id does not exist' do
       get "/api/v1/items/21", headers: valid_headers, as: :json
       expect(response).to have_http_status(404)
-      expect(response.body).to eq("{\"error\":\"Record not found\",\"status\":404}")
+      expect(response.body).to eq("{\"data\":{},\"error\":\"Record not found\",\"status\":404}")
     end
 
     it 'returns 404 if the item id is stringed' do
@@ -162,7 +162,7 @@ RSpec.describe 'ItemsController', type: :request do
       post api_v1_items_url, headers: valid_headers, as: :json
       expect(response).to have_http_status(404)
       expect(response.content_type).to eq("application/json")
-      expect(response.body).to eq("{\"error\":\"Couldn't find Merchant without an ID\",\"status\":404}")
+      expect(response.body).to eq("{\"data\":{},\"error\":\"Couldn't find Merchant without an ID\",\"status\":404}")
     end
 
     it 'can delete an item' do

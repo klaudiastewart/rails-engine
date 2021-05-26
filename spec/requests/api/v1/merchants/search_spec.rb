@@ -20,6 +20,16 @@ describe 'SearchController', type: :request do
     @merchant8 = Merchant.create(name: 'Jka', id: 8)
     @merchant9 = Merchant.create(name: 'iJK', id: 9)
     @merchant10 = Merchant.create(name: 'lmnopa', id: 10)
+    @item1 = @merchant1.items.create(name: 'zaz', description: Faker::Lorem.sentence , unit_price: 1)
+    @item2 = @merchant1.items.create(name: 'zza', description: Faker::Lorem.sentence , unit_price: 2)
+    @item3 = @merchant1.items.create(name: 'aza', description: Faker::Lorem.sentence , unit_price: 3)
+    @item4 = @merchant1.items.create(name: 'blue', description: Faker::Lorem.sentence , unit_price: 3)
+    @item5 = @merchant1.items.create(name: 'lueb', description: Faker::Lorem.sentence , unit_price: 3)
+    @item6 = @merchant1.items.create(name: 'blueqo', description: Faker::Lorem.sentence , unit_price: 3)
+    @item7 = @merchant1.items.create(name: 'balue', description: Faker::Lorem.sentence , unit_price: 3)
+    @item8 = @merchant1.items.create(name: 'oplea', description: Faker::Lorem.sentence , unit_price: 3)
+    @item9 = @merchant1.items.create(name: 'arw', description: Faker::Lorem.sentence , unit_price: 3)
+    @item10 = @merchant1.items.create(name: 'vablueo', description: Faker::Lorem.sentence, unit_price: 1)
   end
 
   describe "GET call" do
