@@ -26,4 +26,11 @@ class Merchant < MerchantAndItem
     .order(revenue: :desc)
     .limit(quantity)
   end
+
+  def single_revenue
+    transactions.
+    where(result: :success).
+    pluck('sum(invoice_items.quantity * invoice_items.unit_price) as revenue').
+    first
+  end
 end
