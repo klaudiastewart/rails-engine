@@ -21,11 +21,11 @@ If you're running this application on your local computer, please make sure to i
 
 ## Endpoints 
 The following are all API endpoints. Some endpoints have optional or required query parameters. These are denoted with `query params`. 
- - All Engpoint run off base connector: `http://localhost:3000`
+ - All Endpoints run off base connector: `http://localhost:3000`
 
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
-| `GET`    | `/api/posts`                             | Retrieve all posts.                      |
+| `GET`    | `/api/v1/merchants`                             | Retrieve all merchants.                      |
 | `POST`   | `/api/posts`                             | Create a new post.                       |
 | `GET`    | `/api/posts/28`                          | Retrieve post #28.                       |
 | `PATCH`  | `/api/posts/28`                          | Update data in post #28.                 |
