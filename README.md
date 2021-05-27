@@ -26,11 +26,11 @@ The following are all API endpoints. Some endpoints have optional or required qu
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
 | `GET`    | `/api/v1/merchants`                             | Retrieve all merchants.                      |
-| `POST`   | `/api/posts`                             | Create a new post.                       |
-| `GET`    | `/api/posts/28`                          | Retrieve post #28.                       |
-| `PATCH`  | `/api/posts/28`                          | Update data in post #28.                 |
-| `POST`   | `/api/posts/28/comments`                 | Add comment to post #28.                 |
-
+| `GET`   | `/api/v1/merchants/<merchant_id>`                             | Retrieve single merchant.                       |
+| `GET`    | `/api/v1/merchants/<merchant_id>/items`                          | Retrieve single merchants items.                       |
+| `GET`  | `/api/v1/merchants/find?name=<name_fragment>`                          | Retrieve merchant with name fragment.                 |
+| `GET`   | `/api/v1/revenue/merchants?quantity=<number_of_merchants>`                 | Retrieve merchants by top revenue.                 |
+| `GET`   | `api/v1/revenue/merchants/<merchant_id>` | Retrieve a single merchant's revenue.
 ### Merchants 
  - To find all merchants: `/api/v1/merchants`, to limit the amount of merchants per page and/or page number add `query params` `?per_page<number_per_page>&page=<page_number>`
  - To find a single merchant: `/api/v1/merchants/<merchant_id>`, where `merchant_id` is the `query param`
