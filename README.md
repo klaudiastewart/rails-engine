@@ -1,28 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 # Rails Engine 
 
 Rails engine is an API that allows users to look up specific e-commerce data on merchants, customers, items, invoices, transactions, and invoice items. The API endpoints are designed to manipulate the data and return what the user is searching for given a param. 
@@ -45,7 +20,8 @@ If you're running this application on your local computer, please make sure to i
 4. Run command `rails s` and navigate to http://localhost:3000 and consume API endpoints below 
 
 ### Endpoints 
-
+The following are all API endpoints. Some endpoints have optional or required query parameters. These are denoted with `query params *`. 
+ - To find all merchants: http://localhost:3000/api/v1/merchants, to limit the amount of merchants per page and page number add `query params *` `?per_page<number_per_page>&page=<page_number>`
 
 
 ## Running the tests
