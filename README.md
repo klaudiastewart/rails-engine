@@ -23,6 +23,14 @@ If you're running this application on your local computer, please make sure to i
 The following are all API endpoints. Some endpoints have optional or required query parameters. These are denoted with `query params`. 
  - All Engpoint run off base connector: `http://localhost:3000`
 
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `GET`    | `/api/posts`                             | Retrieve all posts.                      |
+| `POST`   | `/api/posts`                             | Create a new post.                       |
+| `GET`    | `/api/posts/28`                          | Retrieve post #28.                       |
+| `PATCH`  | `/api/posts/28`                          | Update data in post #28.                 |
+| `POST`   | `/api/posts/28/comments`                 | Add comment to post #28.                 |
+
 ### Merchants 
  - To find all merchants: `/api/v1/merchants`, to limit the amount of merchants per page and/or page number add `query params` `?per_page<number_per_page>&page=<page_number>`
  - To find a single merchant: `/api/v1/merchants/<merchant_id>`, where `merchant_id` is the `query param`
