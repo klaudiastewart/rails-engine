@@ -23,6 +23,8 @@ If you're running this application on your local computer, please make sure to i
 The following are all API endpoints. Some endpoints have optional or required query parameters. These are denoted with `query params`. 
  - All Endpoints run off base connector: `http://localhost:3000`
 
+### Merchants 
+
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
 | `GET`    | `/api/v1/merchants`                             | Retrieve all merchants.                      |
@@ -31,15 +33,9 @@ The following are all API endpoints. Some endpoints have optional or required qu
 | `GET`  | `/api/v1/merchants/find?name=<name_fragment>`                          | Retrieve merchant with name fragment.                 |
 | `GET`   | `/api/v1/revenue/merchants?quantity=<number_of_merchants>`                 | Retrieve merchants by top revenue.                 |
 | `GET`   | `api/v1/revenue/merchants/<merchant_id>` | Retrieve a single merchant's revenue.
-### Merchants 
- - To find all merchants: `/api/v1/merchants`, to limit the amount of merchants per page and/or page number add `query params` `?per_page<number_per_page>&page=<page_number>`
- - To find a single merchant: `/api/v1/merchants/<merchant_id>`, where `merchant_id` is the `query param`
- - To find a single merchants items: `/api/v1/merchants/<merchant_id>/items`
- - Find a merchant with a name fragment: `/api/v1/merchants/find?name=<name_fragment>`, where `name_fragment` is the `query param`, example name=IjL
- - To find a merchants by top revenue: `api/v1/revenue/merchants?quantity=<number_of_merchants>`, where `number_of_merchants` is the `query param`, example quantity=10
- - To get the revenue of a single merchant: `api/v1/revenue/merchants/<merchant_id>
 
 ### Items:
+
  - To get all items: `/api/v1/items`, to limit the amount of merchants per page and/or page number add `query params` `?per_page<number_per_page>&page=<page_number>
  - To find a single item: `/api/v1/items/<item_id>`, where `item_id` is the `query param`
  - To create an item: post `/api/v1/items` 
