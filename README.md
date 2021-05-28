@@ -131,6 +131,14 @@ The following are all API endpoints. Note, some endpoints have optional or requi
    ]
 }
 ``` 
+### An item with an invalid id 
+```
+{
+    "data": {},
+    "error": "Record not found",
+    "status": 404
+}
+```
 
 ## Running the tests
 
