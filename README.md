@@ -170,4 +170,4 @@ Run all tests in application with `bundle exec rspec`. When test is complete, ru
 
 ## Acknowledgments
 
-Id'd like to thank Turing School of Software and Engineering for helping me come up with the idea for this application, and thank you for reading through this project!
+I'd like to thank Turing School of Software and Engineering for helping me come up with the idea for this application, and thank you for reading through this project!
