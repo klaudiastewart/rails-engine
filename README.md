@@ -47,6 +47,14 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 | `DELETE` | `/api/v1/items/<item_id>` | Delete an item. | 
 | `PATCH` | `/api/v1/items/<item_id>` | Update an item. |
 
+### Pagination Examples: 
+
+| Endpoint             | Description                              |
+| -------------------- | ---------------------------------------- |
+| `/api/v1/merchants`         | Initial request. Returns first 20 merchants.  |
+| `/api/v1/merchants?page=2&per_page=10` | Second page, returns 10 merchants using an offset of 10. |
+| `/api/posts/?per_page=10` | Initial request, returns page first page with 10 merchants using an offset of 10. |
+
 
 ## Running the tests
 
