@@ -17,12 +17,12 @@ If you're running this application on your local computer, please make sure to i
 1. Fork and Clone this repo
 2. Install gem packages above
 3. Setup the database: `rails db:(drop,create,migrate,seed)` or `rails db:setup`
-4. Run command `rails s` and navigate to http://localhost:3000 and consume API endpoints below 
+4. Run command `rails s` and navigate to http://localhost:3000 or [Heroku](https://rails-engine-555.herokuapp.com/) to consume API endpoints below 
 
 ## Endpoints 
-The following are all API endpoints. Some endpoints have optional or required query parameters. These are denoted with `query params`. 
+The following are all API endpoints. Note, some endpoints have optional or required query parameters.
  - All endpoints run off base connector `http://localhost:3000` if on local
- - All endpoints run off base connecter `https://rails-engine-555.herokuapp.com` if on Heroku
+ - All endpoints run off base connecter `https://rails-engine-555.herokuapp.com` if on [Heroku](https://rails-engine-555.herokuapp.com/)
 
 ### Merchants:
 
@@ -61,7 +61,7 @@ Run all tests in application with `bundle exec rspec`. When test is complete, ru
 
   - Ruby on Rails
 
-## Built By
+## Developers
 
 - [Klaudia Stewart](https://github.com/klaudiastewart)
 
