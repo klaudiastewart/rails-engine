@@ -1,3 +1,4 @@
+
 Customer.create!([
   {first_name: "Joey", last_name: "Ondricka"},
   {first_name: "Cecelia", last_name: "Osinski"},
