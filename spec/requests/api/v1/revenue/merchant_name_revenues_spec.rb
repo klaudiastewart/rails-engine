@@ -66,14 +66,14 @@ describe 'MerchantNameRevenuesController', type: :request do
 
     it 'sends an error if quantity value is blank or missing' do
       get '/api/v1/revenue/merchants?quantity=', headers: valid_headers, as: :json
-      expect(response).to have_http_status(400)
-      expect(response.body).to eq("{\"data\":{},\"error\":\"Invalid params\",\"status\":400}")
+      expect(response).to have_http_status(500)
+      expect(response.body).to eq("{\"data\":{},\"error\":\"Invalid params\",\"status\":500}")
     end
 
     it 'sends an error if quantity value is a string' do
       get "/api/v1/revenue/merchants?quantity='5''", headers: valid_headers, as: :json
-      expect(response).to have_http_status(400)
-      expect(response.body).to eq("{\"data\":{},\"error\":\"Invalid params\",\"status\":400}")
+      expect(response).to have_http_status(500)
+      expect(response.body).to eq("{\"data\":{},\"error\":\"Invalid params\",\"status\":500}")
     end
   end
 
