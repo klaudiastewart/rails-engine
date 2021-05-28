@@ -1,10 +1,10 @@
 # Rails Engine 
 
-Rails engine is an API that allows users to look up specific e-commerce data on merchants, customers, items, invoices, transactions, and invoice items. The API endpoints are designed to manipulate the data and return what the user is searching for given a param. 
+Rails Engine is an API that allows users to look up specific e-commerce data on merchants and items. The API endpoints are designed to manipulate data and return what the user is searching for within a query param. 
 
 ## Getting Started
 
-If you're running this application on your local computer, please make sure to include these gems in your Gemfile. Once there, run `bundle` to install and update them.
+Visit [Heroku](https://rails-engine-555.herokuapp.com/) or localhost:3000 and get started with the steps below. 
 
 ### Versions
 
@@ -17,7 +17,7 @@ If you're running this application on your local computer, please make sure to i
 1. Fork and Clone this repo
 2. Install gem packages above
 3. Setup the database: `rails db:(drop,create,migrate,seed)` or `rails db:setup`
-4. Run command `rails s` and navigate to http://localhost:3000 or [Heroku](https://rails-engine-555.herokuapp.com/) to consume API endpoints below 
+4. Run command `rails s` and navigate to http://localhost:3000 to consume API endpoints below 
 
 ## Endpoints 
 The following are all API endpoints. Note, some endpoints have optional or required query parameters.
@@ -67,7 +67,7 @@ Run all tests in application with `bundle exec rspec`. When test is complete, ru
 
 ## Deployment
 
-- On Heroku: Add Heroku app link
+- [Rails-555-Heroku](https://rails-engine-555.herokuapp.com/)
 - If you'd like to run this app locally, run `rails s` and navigate to `http://localhost:3000/` in your browser.
 
 ## Built Using
