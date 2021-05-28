@@ -33,7 +33,8 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 | `GET`    | `/api/v1/merchants/<merchant_id>/items`                          | Retrieve single merchants items.                       |
 | `GET`  | `/api/v1/merchants/find?name=<name_fragment>`                          | Retrieve merchant with name fragment.                 |
 | `GET`   | `/api/v1/revenue/merchants?quantity=<number_of_merchants>`                 | Retrieve merchants by top revenue.                 |
-| `GET`   | `api/v1/revenue/merchants/<merchant_id>` | Retrieve a single merchant's revenue.
+| `GET`   | `api/v1/revenue/merchants/<merchant_id>` | Retrieve a single merchant's revenue. | 
+| `GET` | `/api/v1/merchants/most_items?quantity=<quantity>` | Retrieve merchants who sold the most items. |
 
 ### Items:
 
@@ -43,9 +44,11 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 | `GET`   | `/api/v1/items/<item_id>`                             | Retrieve a single item.                       |
 | `GET`    | `/api/v1/items/<item_id>/merchant`                          | Retrieve an item's merchant.                       |
 | `GET`  | `/api/v1/items/find_all?name=<name_fragment>`                          | Retrieve all items by name fragment.                 |
+| `GET` | `/api/v1/revenue/items?quantity=<quantity>` | Retrieve items with highest revenue. | 
 | `POST`   | `/api/v1/items`                 | Create an item.                 |
 | `DELETE` | `/api/v1/items/<item_id>` | Delete an item. | 
 | `PATCH` | `/api/v1/items/<item_id>` | Update an item. |
+
 
 ### Pagination Examples: 
 
@@ -54,7 +57,9 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 | `/api/v1/merchants`         | Initial request. Returns first 20 merchants.  |
 | `/api/v1/merchants?page=2&per_page=10` | Second page, returns 10 merchants using an offset of 10. |
 | `/api/posts/?per_page=10` | Initial request, returns page first page with 10 merchants using an offset of 10. |
-
+| `/api/v1/items` | Initial request. Returns first 20 items.  |
+| `/api/v1/items?page=2&per_page=10` | Second page, returns 10 items using an offset of 10. |
+| `/api/posts/?per_page=10` | Initial request, returns page first page with 10 merchants using an offset of 10. |
 
 ## Running the tests
 
