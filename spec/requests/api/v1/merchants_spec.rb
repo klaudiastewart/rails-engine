@@ -70,12 +70,7 @@ RSpec.describe 'MerchantController', type: :request do
         expect(body[:data]).to be_an(Array)
         expect(body[:data].first.class).to eq(Hash)
       end
-      # it "renders a JSON response with the new api/v1_merchant" do
-      #       get api_v1_merchants_url,
-      #         params: { name: Faker::Name.name }, headers: valid_headers, as: :json
-      #       expect(response).to have_http_status(200)
-      #     end
-      #   end
+      
       it "renders only 20" do
         get api_v1_merchants_url, headers: valid_headers, as: :json
         expect(response).to be_successful

@@ -7,19 +7,16 @@ class Item < MerchantAndItem
 
   validates_presence_of :name, :unit_price
 
-  # enum status: [:disabled, :enabled]
   def self.find_items(name)
     where("name ILIKE ?", "%#{name}%")
   end
 
   def self.find_item(name)
     where(["name ILIKE ? or description ILIKE ?", "%#{name}%", "%#{name}%"]).
-    # order(:name).
     first
   end
 
   def self.total_revenue(quantity)
-    # require "pry"; binding.pry
     joins(:transactions).
     where('transactions.result = ?', 'success').
     select('items.*, sum(invoice_items.quantity * invoice_items.unit_price) as revenue').

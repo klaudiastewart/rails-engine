@@ -1,4 +1,4 @@
-require 'ostruct' # creates dummy object 
+require 'ostruct' 
 class Merchant < MerchantAndItem
   has_many :items
   has_many :invoice_items, through: :items
@@ -7,8 +7,6 @@ class Merchant < MerchantAndItem
   has_many :customers, through: :invoices
 
   validates_presence_of :name
-
-  # enum status: [:disabled, :enabled]
 
   def self.merchant(name)
     where('name ILIKE ?', "%#{name}%").

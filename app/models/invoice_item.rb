@@ -10,7 +10,4 @@ class InvoiceItem < ApplicationRecord
                         :item_id,
                         :invoice_id
 
-                        # :status,
-
-  # enum status: [:pending, :packaged, :shipped]
 end
