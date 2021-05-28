@@ -86,7 +86,7 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 }
 ``` 
 
-## A single item: 
+### A single item: 
 
 ``` 
 {
@@ -100,6 +100,35 @@ The following are all API endpoints. Note, some endpoints have optional or requi
          "merchant_id": 1
       }
     }
+}
+``` 
+
+### A paginated collection of merchants 
+``` 
+{
+    "data": [
+      {
+      "id": "1",
+      "type": "merchant",
+      "attributes": {
+         "name": "Schroeder-Jerde"
+      }
+    },
+      {
+      "id": "2",
+      "type": "merchant",
+      "attributes": {
+         "name": "Klein, Rempel and Jones"
+      }
+    },
+      {
+      "id": "3",
+      "type": "merchant",
+      "attributes": {
+         "name": "Willms and Sons"
+      }
+    }
+   ]
 }
 ``` 
 
