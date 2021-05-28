@@ -80,9 +80,26 @@ The following are all API endpoints. Note, some endpoints have optional or requi
      "id": "1",
      "type": "merchant",
      "attributes": {
-       "name": "Schroeder-Jerde"
+        "name": "Schroeder-Jerde"
      }
    }
+}
+``` 
+
+## A single item: 
+
+``` 
+{
+    "data": {
+      "id": "4",
+      "type": "item",
+      "attributes": {
+         "name": "Item Nemo Facere",
+         "description": "Sunt eum id eius magni consequuntur delectus veritatis. Quisquam laborum illo ut ab. Ducimus in est id  voluptas          autem.",
+         "unit_price": 42.91,
+         "merchant_id": 1
+      }
+    }
 }
 ``` 
 
