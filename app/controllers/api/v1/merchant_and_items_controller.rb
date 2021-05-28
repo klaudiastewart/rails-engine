@@ -1,6 +1,13 @@
 class Api::V1::MerchantAndItemsController < ApplicationController
+  def index
+    return bad_params_400("Invalid quantity") if !params[:quantity].present? || params[:quantity].count("a-zA-Z") > 0
+    # @merchants = Merchant.items_sold(params[:quantity])
+    @merchants = Merchant.merchants_items_sold(params[:quantity])
+    render json: MerchantItemSerializer.new(@merchants)
+  end
+
   def show
-    record_not_found("No id entered") if !params[:merchant_id] && !params[:item_id]
+    return record_not_found("No id entered") if !params[:merchant_id] && !params[:item_id]
     if params.include?(:merchant_id)
       if !Merchant.find_by_id(params[:merchant_id]).nil?
         @merchant = Merchant.find(params[:merchant_id])

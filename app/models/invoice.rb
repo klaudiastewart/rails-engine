@@ -9,5 +9,4 @@ class Invoice < ApplicationRecord
   validates_presence_of :status, :customer_id
 
   # enum status: [:"in progress", :completed, :cancelled]
-
 end
