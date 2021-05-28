@@ -61,6 +61,31 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 | `/api/v1/items?page=2&per_page=10` | Second page, returns 10 items using an offset of 10. |
 | `/api/posts/?per_page=10` | Initial request, returns page first page with 10 merchants using an offset of 10. |
 
+### HTTP Errors: 
+
+| Code  | Title                     | Description                              |
+| ----- | ------------------------- | ---------------------------------------- |
+| `200` | `OK`                      | When a request was successfully processed (e.g. when using `GET`, `PATCH`, `PUT` or `DELETE`). |
+| `201` | `Created`                 | Every time a record has been added to the database (e.g. when creating a new item). 
+| `400` | `Bad request`             | When the request could not be understood (e.g. invalid syntax or params). |
+| `404` | `Not found`               | When URL or entity is not found. |
+
+## Examples 
+
+### A single merchant: 
+
+``` 
+{
+   "data": {
+     "id": "1",
+     "type": "merchant",
+     "attributes": {
+       "name": "Schroeder-Jerde"
+     }
+   }
+}
+``` 
+
 ## Running the tests
 
 Run all tests in application with `bundle exec rspec`. When test is complete, run `open coverage` to see where tests are being run and where they are not.
