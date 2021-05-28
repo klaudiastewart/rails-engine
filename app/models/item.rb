@@ -17,16 +17,28 @@ class Item < MerchantAndItem
     # order(:name).
     first
   end
-  #
-  # def self.find_item_by_price(price)
-  #   where("unit_price >= ?", price.to_i).
-  #   order(:name).
-  #   first
-  #   # Item A Error = 2352, $285.96
-  # end
-  #
-  # def self.find_item_two_prices(min_price, max_price)
-  #   where(["unit_price >= ? or unit_price <= ?", "#{min_price.to_i}, #{max_price.to_i}"]).
-  #   first
-  # end
+
+  def self.total_revenue(quantity)
+    # require "pry"; binding.pry
+    joins(:transactions).
+    where('transactions.result = ?', 'success').
+    select('items.*, sum(invoice_items.quantity * invoice_items.unit_price) as revenue').
+    group(:id).
+    order('revenue desc').
+    limit(quantity)
+  end
+
+  def total_revenue
+    transactions.
+    where('transactions.result = ?', 'success').
+    pluck("sum(invoice_items.quantity * invoice_items.unit_price)")
+  end
+
+  def revenue
+    if total_revenue.empty?
+      return 0
+    else
+      return total_revenue.first
+    end
+  end
 end

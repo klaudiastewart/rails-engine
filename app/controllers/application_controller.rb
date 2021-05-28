@@ -19,6 +19,15 @@ class ApplicationController < ActionController::API
     render json: JSON.parse(body, :quirks_mode => true), status: 400
   end
 
+  def bad_params_500(message)
+    body = ({
+      data: {},
+      error: "#{message}",
+      status: 500
+      }).to_json
+    render json: JSON.parse(body, :quirks_mode => true), status: 500
+  end
+
   def record_not_found(message)
     bad_params(message)
   end
