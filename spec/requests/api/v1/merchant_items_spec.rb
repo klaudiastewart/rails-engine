@@ -67,7 +67,7 @@ RSpec.describe 'MerchantAndItemsController', type: :request do
       get "/api/v1/merchants/#{@merchant1.id}/items", headers: valid_headers, as: :json
       expect(response).to be_successful
       body = JSON.parse(response.body, symbolize_names: true)
-      expect(body[:data].size).to eq(3)
+      expect(body[:data].size).to eq(4)
       expect(body[:data].first.class).to eq(Hash)
     end
 
@@ -78,9 +78,9 @@ RSpec.describe 'MerchantAndItemsController', type: :request do
       expect(body[:data].first[:attributes][:name]).to eq(@item1.name)
       expect(body[:data].first[:attributes][:description]).to eq(@item1.description)
       expect(body[:data].first[:attributes][:unit_price]).to eq(@item1.unit_price)
-      expect(body[:data].last[:attributes][:name]).to eq(@item3.name)
-      expect(body[:data].last[:attributes][:description]).to eq(@item3.description)
-      expect(body[:data].last[:attributes][:unit_price]).to eq(@item3.unit_price)
+      expect(body[:data].last[:attributes][:name]).to eq(@item8.name)
+      expect(body[:data].last[:attributes][:description]).to eq(@item8.description)
+      expect(body[:data].last[:attributes][:unit_price]).to eq(@item8.unit_price)
     end
 
     it 'gives status 404 if merchant id not found' do
