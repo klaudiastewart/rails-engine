@@ -15,7 +15,7 @@ Rails Engine is an API that allows users to look up specific e-commerce data on 
 
 ## Getting Started
 
-Visit [Heroku](https://rails-engine-555.herokuapp.com/) or localhost:3000 and get started with the steps below. 
+Visit ~~[Heroku](https://rails-engine-555.herokuapp.com/)~~ or localhost:3000 and get started with the steps below. NOTE: Heroku is currently down. 
 
 ## Versions
 
@@ -33,7 +33,7 @@ Visit [Heroku](https://rails-engine-555.herokuapp.com/) or localhost:3000 and ge
 ## Endpoints 
 The following are all API endpoints. Note, some endpoints have optional or required query parameters.
  - All endpoints run off base connector `http://localhost:3000` if on local
- - All endpoints run off base connecter `https://rails-engine-555.herokuapp.com` if on [Heroku](https://rails-engine-555.herokuapp.com/)
+ - ~~All endpoints run off base connecter `https://rails-engine-555.herokuapp.com` if on [Heroku](https://rails-engine-555.herokuapp.com/)~~
 
 ### Merchants:
 
@@ -157,7 +157,7 @@ Run all tests in application with `bundle exec rspec`. When test is complete, ru
 
 ## Deployment
 
-- [Rails-555-Heroku](https://rails-engine-555.herokuapp.com/)
+- ~~[Rails-555-Heroku](https://rails-engine-555.herokuapp.com/)~~
 - If you'd like to run this app locally, run `rails s` and navigate to `http://localhost:3000/` in your browser.
 
 ## Built Using
