@@ -36,13 +36,19 @@ The following are all API endpoints. Some endpoints have optional or required qu
 
 ### Items:
 
- - To get all items: `/api/v1/items`, to limit the amount of merchants per page and/or page number add `query params` `?per_page<number_per_page>&page=<page_number>
- - To find a single item: `/api/v1/items/<item_id>`, where `item_id` is the `query param`
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `GET`    | `/api/v1/items`                             | Retrieve all items.                      |
+| `GET`   | `/api/v1/items/<item_id>`                             | Retrieve a single item.                       |
+| `GET`    | `/api/v1/items/<item_id>/merchant`                          | Retrieve an item's merchant.                       |
+| `GET`  | `/api/v1/items/find_all?name=<name_fragment>`                          | Retrieve all items by name fragment.                 |
+| `POST`   | `/api/posts/28/comments`                 | Add comment to post #28.                 |
+
+
  - To create an item: post `/api/v1/items` 
  - To delete an item: delete `/api/v1/items/<item_id>
  - To update and item: patch `/api/v1/items/<item_id>`
- - To get an item's merchant: `/api/v1/items/<item_id>/merchant
- - To find all items by name fragment: `/api/v1/items/find_all?name=<name_fragment>, where `name_fragment` is the `query param`, example name=toy
+
 
 ## Running the tests
 
