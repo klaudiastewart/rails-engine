@@ -21,9 +21,10 @@ If you're running this application on your local computer, please make sure to i
 
 ## Endpoints 
 The following are all API endpoints. Some endpoints have optional or required query parameters. These are denoted with `query params`. 
- - All Endpoints run off base connector: `http://localhost:3000`
+ - All endpoints run off base connector `http://localhost:3000` if on local
+ - All endpoints run off base connecter `https://rails-engine-555.herokuapp.com` if on Heroku
 
-### Merchants 
+### Merchants:
 
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
@@ -42,12 +43,9 @@ The following are all API endpoints. Some endpoints have optional or required qu
 | `GET`   | `/api/v1/items/<item_id>`                             | Retrieve a single item.                       |
 | `GET`    | `/api/v1/items/<item_id>/merchant`                          | Retrieve an item's merchant.                       |
 | `GET`  | `/api/v1/items/find_all?name=<name_fragment>`                          | Retrieve all items by name fragment.                 |
-| `POST`   | `/api/posts/28/comments`                 | Add comment to post #28.                 |
-
-
- - To create an item: post `/api/v1/items` 
- - To delete an item: delete `/api/v1/items/<item_id>
- - To update and item: patch `/api/v1/items/<item_id>`
+| `POST`   | `/api/v1/items`                 | Create an item.                 |
+| `DELETE` | `/api/v1/items/<item_id>` | Delete an item. | 
+| `PATCH` | `/api/v1/items/<item_id>` | Update an item. |
 
 
 ## Running the tests
