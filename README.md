@@ -2,17 +2,28 @@
 
 Rails Engine is an API that allows users to look up specific e-commerce data on merchants and items. The API endpoints are designed to manipulate data and return what the user is searching for within a query param. 
 
+## Table of Contents
+
+  - [Getting Started](#getting-started)
+  - [Versions](#versions)
+  - [Local Setup](#local-setup)
+  - [Endpoints](#endpoints)
+  - [Examples](#examples)
+  - [Running the Tests](#running-the-tests)
+  - [Developers](#developers)
+  - [Acknowledgments](#acknowledgments)
+
 ## Getting Started
 
 Visit [Heroku](https://rails-engine-555.herokuapp.com/) or localhost:3000 and get started with the steps below. 
 
-### Versions
+## Versions
 
 - Ruby 2.5.3
 
 - Rails 5.2.5
 
-### Local Setup
+## Local Setup
 
 1. Fork and Clone this repo
 2. Install gem packages above
